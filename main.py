@@ -9,6 +9,8 @@
 # b) Подумайте как наделить бота "интеллектом"
 # Подумайте об алгоритме игры. Здесь есть ключевые числа количества конфет, которые точно определят победу.
 
+from colorama import Fore, Back, Style
+
 # Выбор мода игры
 def game_mode(g_mode: int) -> str:
     if g_mode == 1:
@@ -80,12 +82,15 @@ first, second = rand_move(player_1, player_2)
 while candies > max_move:
     current_step = game_step(first, current_step)
     candies -= current_step
-    print(f"На столе осталось {candies} конфет.")
+    print(Fore.BLUE + f"На столе осталось {candies} конфет.")
+    print(Style.RESET_ALL)
     if candies <= max_move:
-        print(f"{second}, какой ты молодец! Победа за тобой! Ведь на столе всего лишь {candies} конфет.")
+        print(Back.GREEN + f"{first}, какой ты молодец! Победа за тобой! Ведь на столе всего лишь {candies} конфет.") 
+        print(Style.RESET_ALL)
         break
     current_step = game_step(second, current_step)
     candies -= current_step
     print(f"На столе осталось {candies} конфет.")
     if candies <= max_move:
-        print(f"{first}, какой ты молодец! Победа за тобой! Ведь на столе всего лишь {candies} конфет.")
+        print(Back.GREEN + f"{first}, какой ты молодец! Победа за тобой! Ведь на столе всего лишь {candies} конфет.") 
+        print(Style.RESET_ALL)
